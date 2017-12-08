@@ -8,7 +8,7 @@ import reactDOM from 'react-dom';
 class Content extends React.Component {
   constructor () {
     super()
-    this.state = { isLike: false }
+    this.state = { isLike: false, isName: false }
   }
 
   handleClickLikeButton () {
@@ -17,7 +17,21 @@ class Content extends React.Component {
     })
   }
   handleClickOnTitle1 () {
-    console.log('Click on title.')
+    this.setState({
+      isName: !this.state.isName 
+    })
+  }
+  // setState传递参数的实现
+  handleClickParam () {
+    this.setState((preState) => {
+      return { count: 0 }
+    })
+    this.setState((preState) => {
+      return { count: preState.count + 1 }
+    })
+    this.setState((preState) => {
+      return { count: preState.count + 1 }
+    })
   }
   
   handleClickOnTitle2 (e) {
@@ -32,11 +46,13 @@ class Content extends React.Component {
 
     return(
       <div>
-        <h1 onClick={this.handleClickOnTitle1}>hello</h1>
+        <h1 onClick={this.handleClickOnTitle1.bind(this)}>hello,{this.state.isName ? 'Sara' : 'Susan'}</h1>
 
         <h1 onClick={this.handleClickOnTitle2.bind(this, 'hello')}>hello,{content}</h1>
 
         <h1>1+2={1+2}</h1>
+
+        <h1 onClick={this.handleClickParam.bind(this)}>count: {this.state.count}</h1>
 
         <h1>{(
           function() {
