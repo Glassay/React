@@ -5,33 +5,39 @@
 import React from 'react';
 import { Card, Image, Icon } from 'semantic-ui-react';
 
-class Intruct extends React.Component {
+class Indroduce extends React.Component {
   render() {
     return (
       <Card>
-        <Image src="http://2xtx.com/img/2017/07/f394270153.jpg" />
+        <Image
+          src="http://2xtx.com/img/2017/07/f394270153.jpg"
+        />
         <Card.Content>
-          <Card.Header>
-            Matthew
-          </Card.Header>
           <Card.Meta>
-            <span className="date">
-              Joined in 2015
-            </span>
+            缘,妙不可言
           </Card.Meta>
-          <Card.Description>
-            Matthew is a musician living in Nashville.
+          <Card.Description
+            style={{ marginTop: 10 }}
+          >
+            <Icon className="mail outline" />
+            chengjifeng0215@163.com
+          </Card.Description>
+          <Card.Description
+            style={{ marginTop: 10 }}
+          >
+            <Icon className="google" />
+            chengjifeng0215@gmail.com
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        {/* <Card.Content extra>
           <a>
             <Icon name="user" />
             22 Friends
           </a>
-        </Card.Content>
+        </Card.Content> */}
       </Card>
     );
   }
 }
 
-export default Intruct;
+export default Indroduce;
