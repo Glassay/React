@@ -9,18 +9,16 @@ import { Card } from 'semantic-ui-react';
 class Article extends React.Component {
   render() {
     return (
-      // <Card
-      //   link
-      //   header="Rick Sanchez"
-      //   meta="Scientist"
-      //   description={[
-      //     'Rick is a genius scientist whose alcoholism and reckless,',
-      //     ' nihilistic behavior are a source of concern for his family',
-      //   ].join('')}
-      // />
       <Card.Group>
         <Card
-          fluid color="red"
+          fluid
+          href="#card-example-link-card"
+          header="Elliot Baker"
+          meta="Friend"
+          description="Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat."
+        />
+        <Card
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -28,7 +26,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -36,7 +34,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -44,7 +42,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -52,7 +50,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -60,7 +58,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -68,7 +66,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',
@@ -76,7 +74,7 @@ class Article extends React.Component {
           ].join('')}
         />
         <Card
-          fluid color="red"
+          fluid
           header="Option 1"
           description={[
             'Rick is a genius scientist whose alcoholism and reckless,',

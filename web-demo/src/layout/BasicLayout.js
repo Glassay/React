@@ -60,7 +60,7 @@ export default class BasicLayout extends Component {
               style={{ margin: '0em 30em' }}
             >
               <Button color="black" target="_blank" href="https://github.com/Glassay">Github</Button>
-              <Button color="black" href="https://github.com/Glassay">e-mail</Button>
+              <Button color="black" target="_blank" href="mailto:chengjifeng0215@163.com">e-mail</Button>
             </Container>
           </div>
         </Visibility>
