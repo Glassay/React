@@ -14,7 +14,7 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import styles from './BasicLayout.less';
+import styles from './BasicLayout.css';
 import Introduce from '../components/Introduce';
 import Article from '../components/Article';
 import Pigeonhole from '../components/Pigeonhole';
@@ -34,6 +34,17 @@ export default class BasicLayout extends Component {
             style={{ minHeight: 500, padding: '1em 0em' }}
             className={styles.bgimage}
           >
+            {/* <div>
+              <div className={`${styles.ih_item} ${styles.circle} ${styles.effect10} ${styles.bottom_to_top}`}>
+                <div className={styles.img}>
+                  <img src="https://www.tougetu.com/usr/themes/GreenGrapes2/img/head.jpg" alt="img" />
+                </div>
+                <div className={styles.info}>
+                  <h3>Heading here</h3>
+                  <p>Description goes here</p>
+                </div>
+              </div>
+            </div> */}
             <Header
               as="h1"
               textAlign="center"
@@ -73,10 +84,6 @@ export default class BasicLayout extends Component {
                 <Article
                   style={{ width: 500 }}
                 />
-                <Header as="h3" style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
-                <p style={{ fontSize: '1.33em' }}>
-                  Yes that right, you thought it was th
-                </p>
               </Grid.Column>
               <Grid.Column floated="right" width={4}>
                 <Introduce />
@@ -91,7 +98,7 @@ export default class BasicLayout extends Component {
             <Grid divided inverted stackable>
               <Grid.Row>
                 <Grid.Column width={3}>
-                  <Header inverted as="h4" content="About" />
+                  <Header inverted as="h4" content="不错的网站" />
                   <List link inverted>
                     <List.Item as="a">Sitemap</List.Item>
                     <List.Item as="a">Contact Us</List.Item>
@@ -100,7 +107,7 @@ export default class BasicLayout extends Component {
                   </List>
                 </Grid.Column>
                 <Grid.Column width={3}>
-                  <Header inverted as="h4" content="Services" />
+                  <Header inverted as="h4" content="友情链接" />
                   <List link inverted>
                     <List.Item as="a">Banana Pre-Order</List.Item>
                     <List.Item as="a">DNA FAQ</List.Item>
