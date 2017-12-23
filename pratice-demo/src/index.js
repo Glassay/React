@@ -5,6 +5,7 @@
 import React from 'react';
 import reactDOM from 'react-dom';
 
+// *********列表渲染********
 const users = [
   { username: 'Jerry', age: 21, gender: 'male'},
   { username: 'Tomy', age: 22, gender: 'male'},
@@ -31,7 +32,9 @@ class Index extends React.Component {
   }
 }
 
-// 电脑和显示器
+
+
+// ********电脑和显示器*********
 class Screen extends React.Component {
   static defaultProps={
     showContent: '无内容'    
@@ -64,6 +67,66 @@ class Computer extends React.Component {
   }
 }
 
+
+
+//*******小数转百分数转换器*******
+
+//输入区域
+class Input extends React.Component {
+  constructor() {
+    super()
+  }
+
+  inputChange(event) {
+    this.props.valueChange(event.target.value)
+  }
+
+  render() {
+    return (
+      <div>
+        <input
+          type='number'
+          onChange={this.inputChange.bind(this)}/>
+      </div>
+    );
+  }
+}
+
+// 显示区域
+class PercentageShower extends React.Component {
+  render() {
+    return (
+      <div>{(this.props.value * 100).toFixed(2) + '%'}</div>
+    );
+  }
+}
+
+// 输入区和显示区整体
+class PercentageApp extends React.Component {
+  constructor () {
+    super()
+    this.state = {value: 0}
+  }
+
+  valueChange(value) {
+    this.setState({
+      value: value
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Input valueChange={this.valueChange.bind(this)} />
+        <PercentageShower value={this.state.value} />
+      </div>
+    );
+  }
+}
+
+
+
+// *******点赞组件**********
 class Content extends React.Component {
   // React.js提供的默认配置组件属性的方式
   static defaultProps={
@@ -105,10 +168,7 @@ class Content extends React.Component {
   }
   render() {
     const content = 'Sara'
-    const className = 'header'
     const isGood = false
-    const Stitle = <h1 className='title'>ScriptOJ</h1>
-    const page = <div className='content'></div>
     
     //让点赞组件具有一定的可配置性
     // const liketext = this.props.liketext || '取消成功'
@@ -142,6 +202,7 @@ class Content extends React.Component {
         </button>
         <Computer />
         <Index/>
+        <PercentageApp />
       </div>
     )
   }
