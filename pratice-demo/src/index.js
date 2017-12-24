@@ -127,6 +127,17 @@ class PercentageApp extends React.Component {
 
 // ********显示或隐藏Header*********
 class Header extends React.Component {
+  componentWillUnmount() {
+    console.log('component will unmount')
+  }
+
+  componentWillMount() {
+    console.log('component will mount')
+  }
+
+  componentDidMount() {
+    console.log('component did mount')
+  }
   render() {
     return (
       <div>hello</div>
