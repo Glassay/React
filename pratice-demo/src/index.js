@@ -169,6 +169,34 @@ class Show extends React.Component {
   }
 }
 
+// **********时钟************
+class Clock extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      date: new Date()
+    }
+  }
+
+  // 通过ComponentWillMount启动一个定时器,让时间每隔一秒刷新
+  componentWillMount() {
+    this.timer = setInterval(() => {
+      this.setState({ date: new Date() })
+    }, 1000)
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>
+          现在时间是：
+          {this.state.date.toLocaleTimeString()}
+        </h1>
+      </div>
+    )
+  }
+}
+
 
 // *******点赞组件**********
 class Content extends React.Component {
@@ -248,6 +276,7 @@ class Content extends React.Component {
         <Index/>
         <PercentageApp />
         <Show />
+        <Clock />
       </div>
     )
   }
