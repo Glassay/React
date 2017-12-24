@@ -125,6 +125,38 @@ class PercentageApp extends React.Component {
   }
 }
 
+// ********显示或隐藏Header*********
+class Header extends React.Component {
+  render() {
+    return (
+      <div>hello</div>
+    )
+  }
+}
+
+class Show extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isShower: true
+    }
+  }
+
+  handleHiden() {
+    this.setState({
+      isShower: !this.state.isShower
+    })
+  }
+
+  render() {
+    return(
+      <div>
+        {this.state.isShower ? <Header /> : null}
+        <button onClick={this.handleHiden.bind(this)}>显示OR隐藏</button>
+      </div>
+    )
+  }
+}
 
 
 // *******点赞组件**********
@@ -204,6 +236,7 @@ class Content extends React.Component {
         <Computer />
         <Index/>
         <PercentageApp />
+        <Show />
       </div>
     )
   }
