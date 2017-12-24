@@ -79,6 +79,7 @@ class Input extends React.Component {
 
   inputChange(event) {
     this.props.valueChange(event.target.value)
+    console.log(this.props)
   }
 
   render() {
@@ -152,14 +153,14 @@ class Content extends React.Component {
   }
   // setState传递参数的实现
   handleClickParam () {
-    this.setState((preState) => {
+    this.setState((prevState) => {
       return { count: 0 }
     })
-    this.setState((preState) => {
-      return { count: preState.count + 1 }
+    this.setState((prevState) => {
+      return { count: prevState.count + 1 }
     })
-    this.setState((preState) => {
-      return { count: preState.count + 1 }
+    this.setState((prevState) => {
+      return { count: prevState.count + 1 }
     })
   }
   
