@@ -14,9 +14,10 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+import { Switch, Route } from 'dva/router';
 import styles from './BasicLayout.css';
 import Introduce from '../components/Introduce';
-import Article from '../components/Article';
+import ArticleInfo from '../components/Article/ArticleInfo';
 import Pigeonhole from '../components/Pigeonhole';
 import Tag from '../components/Tag';
 
@@ -34,17 +35,6 @@ export default class BasicLayout extends Component {
             style={{ minHeight: 500, padding: '1em 0em' }}
             className={styles.bgimage}
           >
-            {/* <div>
-              <div className={`${styles.ih_item} ${styles.circle} ${styles.effect10} ${styles.bottom_to_top}`}>
-                <div className={styles.img}>
-                  <img src="https://www.tougetu.com/usr/themes/GreenGrapes2/img/head.jpg" alt="img" />
-                </div>
-                <div className={styles.info}>
-                  <h3>Heading here</h3>
-                  <p>Description goes here</p>
-                </div>
-              </div>
-            </div> */}
             <Header
               as="h1"
               textAlign="center"
@@ -81,9 +71,9 @@ export default class BasicLayout extends Component {
           <Grid container stackable>
             <Grid.Row>
               <Grid.Column width={10}>
-                <Article
-                  style={{ width: 500 }}
-                />
+                <Switch>
+                  <Route path="/" render={() => <ArticleInfo style={{ width: 500 }} />} />
+                </Switch>
               </Grid.Column>
               <Grid.Column floated="right" width={4}>
                 <Introduce />
