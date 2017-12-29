@@ -4,43 +4,42 @@
  */
 
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { connect } from 'dva';
+import { Card, Header } from 'semantic-ui-react';
+import Image from 'semantic-ui-react/dist/commonjs/elements/Image/Image';
+import styles from './ArticleInfo.less';
 
 class ArticleInfo extends React.Component {
   constructor() {
     super();
     this.state = {
-      article: [
-        {
-          header: '1',
-          meta: '1',
-          description: 'Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.',
-        },
-        {
-          header: '2',
-          meta: '2',
-          description: 'Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.',
-        },
-        {
-          header: '3',
-          meta: '3',
-          description: 'Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.',
-        },
-      ],
     };
   }
   render() {
+    const { allArticle } = this.props;
     return (
       <Card.Group>
         {
-          this.state.article.map(item => (
-            <Card
-              fluid
-              href="#card-example-link-card"
-              header={item.header}
-              meta={item.meta}
-              description={item.description}
-            />
+          allArticle.map(item => (
+            <div>
+              <Card
+                fluid
+                href="#card-example-link-card"
+                key={item.key}
+                header={item.header}
+                description={item.description}
+                style={{ marginTop: 10 }}
+              >
+                {/* <div className={styles.bgimg}>
+                  <Card.Content>
+                    <Card.Header>{item.header}</Card.Header>
+                  </Card.Content>
+                </div>
+                <Card.Content>
+                  <Card.Description>{item.description}</Card.Description>
+                </Card.Content> */}
+              </Card>
+            </div>
           ))
         }
       </Card.Group>
@@ -48,4 +47,6 @@ class ArticleInfo extends React.Component {
   }
 }
 
-export default ArticleInfo;
+export default connect(state => ({
+  allArticle: state.article.allArticle,
+}))(ArticleInfo);
