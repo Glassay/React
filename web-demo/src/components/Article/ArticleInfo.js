@@ -21,25 +21,25 @@ class ArticleInfo extends React.Component {
       <Card.Group>
         {
           allArticle.map(item => (
-            <div>
-              <Card
-                fluid
-                href="#card-example-link-card"
-                key={item.key}
-                header={item.header}
-                description={item.description}
-                style={{ marginTop: 10 }}
-              >
-                {/* <div className={styles.bgimg}>
-                  <Card.Content>
-                    <Card.Header>{item.header}</Card.Header>
-                  </Card.Content>
-                </div>
-                <Card.Content>
-                  <Card.Description>{item.description}</Card.Description>
-                </Card.Content> */}
-              </Card>
-            </div>
+            <Card
+              fluid
+              href="#card-example-link-card"
+              key={item.key}
+              style={{ marginTop: 10 }}
+            >
+              <Image
+                style={{ height: 250 }}
+                src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-543828.jpg"
+              />
+              <Card.Content>
+                <Header>{item.header}
+                  <div className={styles.type}>JavaScript</div>
+                </Header>
+                <div>------2017-12-29</div>
+                <hr />
+                <Card.Description style={{ margin: 10 }}>{item.description}</Card.Description>
+              </Card.Content>
+            </Card>
           ))
         }
       </Card.Group>
