@@ -14,7 +14,7 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import { Switch, Route } from 'dva/router';
+// import { Switch, Route } from 'dva/router';
 import styles from './BasicLayout.css';
 import Introduce from '../components/Introduce';
 import ArticleInfo from '../components/Article/ArticleInfo';
@@ -71,9 +71,7 @@ export default class BasicLayout extends Component {
           <Grid container stackable>
             <Grid.Row>
               <Grid.Column width={10}>
-                <Switch>
-                  <Route path="/" render={() => <ArticleInfo style={{ width: 500 }} />} />
-                </Switch>
+                <ArticleInfo />
               </Grid.Column>
               <Grid.Column floated="right" width={4}>
                 <Introduce />
