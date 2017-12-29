@@ -26,8 +26,7 @@ class ArticleInfo extends React.Component {
                 src={item.src}
               />
               <Card.Content>
-                <Header>{item.header}
-                </Header>
+                <Header>{item.header}</Header>
                 <div>
                   <div>------2017-12-29</div>
                   <div className={styles.type}>JavaScript</div>
