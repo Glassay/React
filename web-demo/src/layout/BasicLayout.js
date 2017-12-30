@@ -12,6 +12,8 @@ import {
   List,
   Segment,
   Visibility,
+  Menu,
+  Input,
 } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 // import { Switch, Route } from 'dva/router';
@@ -21,11 +23,30 @@ import ArticleInfo from '../components/Article/ArticleInfo';
 import Pigeonhole from '../components/Pigeonhole';
 import Tag from '../components/Tag';
 
+const FixedMenu = () => (
+  <Menu fixed="top" size="large" inverted pointing>
+    <Container inverted>
+      <Menu.Item as="a" active>首页</Menu.Item>
+      <Menu.Item as="a">留言板</Menu.Item>
+      <Menu.Item as="a">Github</Menu.Item>
+      <Menu.Menu position="right">
+        <Input icon="search" placeholder="Search..." />
+      </Menu.Menu>
+    </Container>
+  </Menu>
+);
+
 export default class BasicLayout extends Component {
+  state = {}
+
+  hideFixedMenu = () => this.setState({ visible: false })
+  showFixedMenu = () => this.setState({ visible: true })
 
   render() {
+    const { visible } = this.state;
     return (
       <div>
+        { visible ? <FixedMenu /> : null }
         <Visibility
           onBottomPassed={this.showFixedMenu}
           onBottomVisible={this.hideFixedMenu}
