@@ -25,7 +25,7 @@ import Tag from '../components/Tag';
 
 const FixedMenu = () => (
   <Menu fixed="top" size="large" inverted pointing>
-    <Container inverted>
+    <Container>
       <Menu.Item as="a" active>首页</Menu.Item>
       <Menu.Item as="a">留言板</Menu.Item>
       <Menu.Item as="a">Github</Menu.Item>

@@ -17,9 +17,11 @@ class ArticleInfo extends React.Component {
         {
           allArticle.map(item => (
             <Card
+              // data-aos="zoom-in-left"
               fluid
               key={item.key}
               style={{ marginTop: 10 }}
+              className="sr"
             >
               <Image
                 style={{ height: 250 }}
@@ -27,9 +29,12 @@ class ArticleInfo extends React.Component {
               />
               <Card.Content>
                 <Header>{item.header}</Header>
-                <div>
-                  <div>------2017-12-29</div>
-                  <div className={styles.type}>JavaScript</div>
+                <div className={styles.type}>
+                  <div className="ui tag labels">
+                    <a className="ui blue label">JavaScript</a>
+                    <a className="ui violet label">数组</a>
+                  </div>
+                  <div>-----2018-01-02</div>
                 </div>
                 <hr />
                 <Card.Description className={styles.over_article}>{item.description}</Card.Description>

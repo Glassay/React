@@ -4,9 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>程基锋的个人博客</title>
+  <!-- <link href="https://cdn.bootcss.com/aos/2.2.0/aos.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/aos/2.2.0/aos.js"></script> -->
+  <script src="https://cdn.bootcss.com/scrollReveal.js/4.0.0-beta.24/scrollreveal.js"></script>
   <link rel="stylesheet" href="/index.css" />
 </head>
 <body>
   <div id="root"></div>
+  <script>
+      window.onload = function () {
+          // 设置参数
+          var config = {
+              // reset: true, // 滚动鼠标时，动画开关
+              origin: 'left', // 动画开始的方向
+              duration: 1000, // 动画持续时间
+              delay: 0, // 延迟
+              rotate: {x: 0, y: 0, z: 0}, // 过度到0的初始角度
+              opacity: 0, // 初始透明度
+              scale: 0.2, //缩放
+              easing: 'linear', // 缓动'ease', 'ease-in-out'，'linear'
+          }
+          // 引用
+          window.sr = ScrollReveal();
+          // 后面的50那个参数是代表每隔50毫米出现一个li,最后一个参数是调用随机颜色函数
+          sr.reveal('.sr', config, 50);
+      }
+  </script>
 </body>
 </html>
