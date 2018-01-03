@@ -45,7 +45,7 @@ export default class BasicLayout extends Component {
   render() {
     const { visible } = this.state;
     return (
-      <div>
+      <div className={styles.bgcolor}>
         { visible ? <FixedMenu /> : null }
         <Visibility
           onBottomPassed={this.showFixedMenu}
@@ -73,7 +73,7 @@ export default class BasicLayout extends Component {
             <Header
               as="h2"
               textAlign="center"
-              content="Do whatever you want when you want to."
+              content="Do whatever you want when you want to"
               inverted
               style={{ fontSize: '1.7em', fontWeight: 'normal' }}
             />

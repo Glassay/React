@@ -3,6 +3,10 @@
   background-size: cover;
 }
 
+.bgcolor {
+  background-color: rgba(244,244,244,0.8)
+}
+
 .head {
   border-radius: 50%;
 }

@@ -25,8 +25,7 @@ const ArticleShow = () => {
             src="https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-543828.jpg"
           />
           <Card.Content>
-            <Header>{item.header}
-            </Header>
+            <Header>{item.header}</Header>
             <div>
               <div>------2017-12-29</div>
               <div className={styles.type}>JavaScript</div>

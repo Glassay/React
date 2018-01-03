@@ -5,8 +5,7 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import { Card, Header } from 'semantic-ui-react';
-import Image from 'semantic-ui-react/dist/commonjs/elements/Image/Image';
+import { Card, Header, Image } from 'semantic-ui-react';
 import styles from './ArticleInfo.less';
 
 class ArticleInfo extends React.Component {
@@ -17,7 +16,6 @@ class ArticleInfo extends React.Component {
         {
           allArticle.map(item => (
             <Card
-              // data-aos="zoom-in-left"
               fluid
               key={item.key}
               style={{ marginTop: 10 }}
