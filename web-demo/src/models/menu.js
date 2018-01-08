@@ -1,3 +1,7 @@
+/**
+ * 2018-1-08 Jifeng Cheng
+ * show or hide for the head menu
+ */
 export default {
   namespace: 'menu',
 

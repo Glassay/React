@@ -1,5 +1,6 @@
 /**
  * 2017-12-18 Jifeng Cheng
+ * the card of personal introduce
  */
 
 import React from 'react';

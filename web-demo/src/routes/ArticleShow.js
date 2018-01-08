@@ -6,7 +6,6 @@
 import React from 'react';
 import { Card, Image, Header } from 'semantic-ui-react';
 import connect from 'dva';
-// import scrollreveal from 'scrollreveal';
 import styles from '../components/Article/ArticleInfo.less';
 
 const ArticleShow = () => {

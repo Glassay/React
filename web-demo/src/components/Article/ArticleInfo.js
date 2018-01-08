@@ -1,6 +1,6 @@
 /**
  * 2017-12-18 Jifeng Cheng
- * 单个文章简要展示
+ * the single article
  */
 
 import React from 'react';

@@ -1,6 +1,6 @@
 /**
  * 2017-12-18 Jifeng Cheng
- * 标签云组件
+ * the component of tag cloud
  */
 
 import React from 'react';

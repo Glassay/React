@@ -11,7 +11,6 @@ class Pigeonhole extends React.Component {
     return (
       <Card>
         <Card.Content header="归档" />
-        {/* <Card.Content description={description} /> */}
         <Card.Content extra>
           4 Friends
         </Card.Content>

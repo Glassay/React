@@ -1,5 +1,6 @@
 /**
  * 2017-12-16 Jifeng Cheng
+ * the main page
  */
 
 import React, { Component } from 'react';
@@ -37,10 +38,6 @@ const FixedMenu = () => (
 );
 
 class BasicLayout extends Component {
-  // state={}
-
-  // hideFixedMenu = () => this.setState({ visible: false })
-  // showFixedMenu = () => this.setState({ visible: true })
   onShow = () => {
     this.props.dispatch({
       type: 'menu/showFixedMenu',
