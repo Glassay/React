@@ -15,9 +15,9 @@ import {
   Menu,
   Input,
 } from 'semantic-ui-react';
+import { connect } from 'dva';
 import 'semantic-ui-css/semantic.min.css';
-// import { Switch, Route } from 'dva/router';
-import styles from './BasicLayout.css';
+import styles from './BasicLayout.less';
 import Introduce from '../components/Introduce';
 import ArticleInfo from '../components/Article/ArticleInfo';
 import Pigeonhole from '../components/Pigeonhole';
@@ -36,24 +36,34 @@ const FixedMenu = () => (
   </Menu>
 );
 
-export default class BasicLayout extends Component {
-  state = {}
+class BasicLayout extends Component {
+  // state={}
 
-  hideFixedMenu = () => this.setState({ visible: false })
-  showFixedMenu = () => this.setState({ visible: true })
+  // hideFixedMenu = () => this.setState({ visible: false })
+  // showFixedMenu = () => this.setState({ visible: true })
+  onShow = () => {
+    this.props.dispatch({
+      type: 'menu/showFixedMenu',
+    });
+  }
+
+  onHide = () => {
+    this.props.dispatch({
+      type: 'menu/hideFixedMenu',
+    });
+  }
 
   render() {
-    const { visible } = this.state;
+    const { visible } = this.props;
     return (
       <div className={styles.bgcolor}>
         { visible ? <FixedMenu /> : null }
         <Visibility
-          onBottomPassed={this.showFixedMenu}
-          onBottomVisible={this.hideFixedMenu}
+          onBottomPassed={this.onShow}
+          onBottomVisible={this.onHide}
           once={false}
         >
           <div
-            style={{ minHeight: 500, padding: '1em 0em' }}
             className={styles.bgimage}
           >
             <Header
@@ -61,7 +71,7 @@ export default class BasicLayout extends Component {
               textAlign="center"
               style={{ marginTop: '3em' }}
             >
-              <Image className={styles.head} src="http://2xtx.com/img/2017/07/f394270153.jpg" />
+              <Image className={styles.headimg} src="http://2xtx.com/img/2017/07/f394270153.jpg" />
             </Header>
             <Header
               as="h1"
@@ -75,11 +85,9 @@ export default class BasicLayout extends Component {
               textAlign="center"
               content="Do whatever you want when you want to"
               inverted
-              style={{ fontSize: '1.7em', fontWeight: 'normal' }}
             />
             <Container
               textAlign="center"
-              style={{ margin: '0em 30em' }}
             >
               <Button color="black" target="_blank" href="https://github.com/Glassay">Github</Button>
               <Button color="black" target="_blank" href="mailto:chengjifeng0215@163.com">e-mail</Button>
@@ -88,7 +96,7 @@ export default class BasicLayout extends Component {
         </Visibility>
         <h4 className="ui horizontal divider header"><i className="tag icon" /> Article </h4>
 
-        <Segment style={{ padding: '2em 0em' }} vertical>
+        <Segment vertical>
           <Grid container stackable>
             <Grid.Row>
               <Grid.Column width={10}>
@@ -136,3 +144,8 @@ export default class BasicLayout extends Component {
     );
   }
 }
+
+export default connect(state => ({
+  visible: state.menu.visible,
+}))(BasicLayout);
+

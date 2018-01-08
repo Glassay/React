@@ -9,6 +9,7 @@ const app = dva();
 
 // 3. Model
 app.model(require('./models/article'));
+app.model(require('./models/menu'));
 
 // 4. Router
 app.router(require('./router'));

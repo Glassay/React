@@ -18,7 +18,6 @@ class ArticleInfo extends React.Component {
             <Card
               fluid
               key={item.key}
-              style={{ marginTop: 10 }}
               className="sr"
             >
               <Image
@@ -35,7 +34,10 @@ class ArticleInfo extends React.Component {
                   <div>-----2018-01-02</div>
                 </div>
                 <hr />
-                <Card.Description className={styles.over_article}>{item.description}</Card.Description>
+                <Card.Description
+                  className={styles.over_article}
+                >{item.description}
+                </Card.Description>
               </Card.Content>
             </Card>
           ))
