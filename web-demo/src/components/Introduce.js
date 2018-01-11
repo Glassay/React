@@ -15,20 +15,20 @@ class Indroduce extends React.Component {
         />
         <Card.Content>
           <Card.Meta>
-            缘,妙不可言
+            缘,妙不可言！
           </Card.Meta>
-          <Card.Description
+          <Card.Content
             style={{ marginTop: 10 }}
           >
             <Icon className="mail outline" />
             chengjifeng0215@163.com
-          </Card.Description>
-          <Card.Description
+          </Card.Content>
+          <Card.Content
             style={{ marginTop: 10 }}
           >
             <Icon className="google" />
             chengjifeng0215@gmail.com
-          </Card.Description>
+          </Card.Content>
         </Card.Content>
       </Card>
     );

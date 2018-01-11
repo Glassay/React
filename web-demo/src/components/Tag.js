@@ -4,14 +4,19 @@
  */
 
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Icon } from 'semantic-ui-react';
 import Label from '../components/Label/Label';
 
 class Tag extends React.Component {
   render() {
     return (
       <Card>
-        <Card.Content header="标签云" />
+        <Card.Content>
+          <Card.Header as="h4" color="grey">
+            <Icon name="send" />
+            文章归档
+          </Card.Header>
+        </Card.Content>
         <Card.Content extra>
           <Label />
         </Card.Content>
