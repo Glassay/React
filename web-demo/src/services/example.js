@@ -1,3 +1,7 @@
+/**
+ * 2018-1-12 Jifeng Cheng
+ */
+
 import request from '../utils/request';
 
 export function query() {

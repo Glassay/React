@@ -1,3 +1,7 @@
+/**
+ * 2018-1-12 Jifeng Cheng
+ */
+
 import fetch from 'dva/fetch';
 
 function parseJSON(response) {
