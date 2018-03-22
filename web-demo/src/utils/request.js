@@ -1,34 +1,67 @@
 /**
- * 2018-1-12 Jifeng Cheng
+ * 2018-1-11 Jifeng CHeng
  */
 
-import fetch from 'dva/fetch';
+import axios from 'axios';
+import qs from 'qs';
+import HttpStatus from 'http-status-codes';
+// import {
+//   baseURL,
+//   requestTimeOut
+// }                 from './config'
 
-function parseJSON(response) {
-  return response.json();
-}
+axios.defaults.baseURL = 'http://192.168.0.107:8080';
+axios.defaults.timeout = 10000;
+axios.defaults.withCredentials = true;
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
+const fetch = (options) => {
+  const {
+    method,
+    data,
+    url,
+  } = options;
+
+  switch (method.toLowerCase()) {
+    case 'get':
+      return axios.get(`${url}${data ? `?${qs.stringify(data)}` : ''}`);
+    case 'delete':
+      return axios.delete(url, { data });
+    case 'head':
+      return axios.head(url, data);
+    case 'post':
+      return axios.post(url, data);
+    case 'put':
+      return axios.put(url, data);
+    case 'patch':
+      return axios.patch(url, data);
+    default:
+      return axios(options);
   }
+};
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
+export default function request(options) {
+  return fetch(options).then((response) => {
+    console.log('options: ', options, 'response: ', response);
+    if (response.status === HttpStatus.OK) {
+      return response.data;
+    }
+    throw { response } // eslint-disable-line
+  }).catch((error) => {
+    const { response } = error;
+    console.log('request error: ', error);
+    let message, status // eslint-disable-line
+    if (response) {
+      status = response.status;
+      const { data, statusText } = response;
+      message = data.message || statusText || HttpStatus.getStatusText(status);
+    } else {
+      status = 600;
+      message = 'Network Error';
+    }
+    throw { status, message } // eslint-disable-line
+  });
 }
 
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
- */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => ({ data }))
-    .catch(err => ({ err }));
-}
+export const setToken = function (authToken) {
+  axios.defaults.headers.common.Authorization = `Bearer ${authToken}`;
+};

@@ -4,18 +4,34 @@
  */
 
 import React from 'react';
+import marked from 'marked';
+import highlight from 'highlight.js';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Card, Header, Image, Label, Button } from 'semantic-ui-react';
 import styles from './ArticleInfo.less';
 
 class ArticleInfo extends React.Component {
+  componentWillMount() {
+    this.props.dispatch({
+      type: 'article/showArticle',
+    });
+    marked.setOptions({
+      highlight: code => highlight.highlightAuto(code).value,
+    });
+  }
   render() {
-    const { allArticle } = this.props;
+    const image = [
+      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-543828.jpg',
+      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267050.jpg',
+      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-16295.jpg',
+      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267055.png',
+    ];
+    const { Article } = this.props;
     return (
       <Card.Group>
         {
-          allArticle.map(item => (
+          Article.data === undefined ? null : Article.data.map(item => (
             <Card
               fluid
               key={item.key}
@@ -23,26 +39,21 @@ class ArticleInfo extends React.Component {
             >
               <Image
                 style={{ height: 250 }}
-                src={item.src}
+                src={image[Math.floor(Math.random() * image.length)]}
               />
               <Card.Content>
-                <Header>{item.header}</Header>
+                <Header>{item.Title}</Header>
                 <div className={styles.type}>
-                  {/* <div className="ui tag labels">
-                    <a className="ui blue label">JavaScript</a>
-                    <a className="ui violet label">数组</a>
-                  </div> */}
                   <div>
-                    <Label as="a" color="blue" tag>JavaScript</Label>
-                    <Label as="a" color="violet" tag>数组</Label>
+                    <Label as="a" color="blue" tag>{item.Label1}</Label>
+                    <Label as="a" color="violet" tag>{item.Label2}</Label>
                   </div>
                   <div>-----2018-01-02</div>
                 </div>
                 <hr />
                 <Card.Description
-                  className={styles.over_article}
-                >{item.description}
-                </Card.Description>
+                  dangerouslySetInnerHTML={{ __html: marked(item.Content) }}
+                />
                 <Link to="article">
                   <Button
                     content="继续阅读"
@@ -59,5 +70,5 @@ class ArticleInfo extends React.Component {
 }
 
 export default connect(state => ({
-  allArticle: state.article.allArticle,
+  Article: state.article.Article,
 }))(ArticleInfo);
