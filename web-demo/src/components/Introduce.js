@@ -11,7 +11,7 @@ class Indroduce extends React.Component {
     return (
       <Card>
         <Image
-          src="http://2xtx.com/img/2017/07/f394270153.jpg"
+          src="http://78.media.tumblr.com/194a7ec366b93328ac338b9d34e4fc04/tumblr_okexnjx88P1qc4uvwo1_500.gif"
         />
         <Card.Content>
           <Card.Meta>

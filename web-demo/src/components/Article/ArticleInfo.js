@@ -5,7 +5,8 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import { Card, Header, Image } from 'semantic-ui-react';
+import { Link } from 'dva/router';
+import { Card, Header, Image, Label, Button } from 'semantic-ui-react';
 import styles from './ArticleInfo.less';
 
 class ArticleInfo extends React.Component {
@@ -27,9 +28,13 @@ class ArticleInfo extends React.Component {
               <Card.Content>
                 <Header>{item.header}</Header>
                 <div className={styles.type}>
-                  <div className="ui tag labels">
+                  {/* <div className="ui tag labels">
                     <a className="ui blue label">JavaScript</a>
                     <a className="ui violet label">数组</a>
+                  </div> */}
+                  <div>
+                    <Label as="a" color="blue" tag>JavaScript</Label>
+                    <Label as="a" color="violet" tag>数组</Label>
                   </div>
                   <div>-----2018-01-02</div>
                 </div>
@@ -38,6 +43,12 @@ class ArticleInfo extends React.Component {
                   className={styles.over_article}
                 >{item.description}
                 </Card.Description>
+                <Link to="article">
+                  <Button
+                    content="继续阅读"
+                    color="black"
+                  />
+                </Link>
               </Card.Content>
             </Card>
           ))

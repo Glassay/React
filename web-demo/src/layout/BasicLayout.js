@@ -9,7 +9,6 @@ import {
   Container,
   Grid,
   Header,
-  Image,
   List,
   Segment,
   Visibility,
@@ -53,7 +52,7 @@ class BasicLayout extends Component {
   render() {
     const { visible } = this.props;
     return (
-      <div className={styles.bgcolor}>
+      <div>
         { visible ? <FixedMenu /> : null }
         <Visibility
           onBottomPassed={this.onShow}
@@ -61,21 +60,20 @@ class BasicLayout extends Component {
           once={false}
         >
           <div
-            className={styles.bgimage}
+            className={styles.bgImage}
           >
-            <Header
+            {/* <Header
               as="h1"
               textAlign="center"
               style={{ marginTop: '3em' }}
             >
-              <Image className={styles.headimg} src="http://2xtx.com/img/2017/07/f394270153.jpg" />
-            </Header>
+            </Header> */}
             <Header
               as="h1"
               textAlign="center"
               content="Cease to struggle and you cease to live"
               inverted
-              style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0 }}
+              style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
             />
             <Header
               as="h2"
