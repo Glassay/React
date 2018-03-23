@@ -8,8 +8,9 @@ import marked from 'marked';
 import highlight from 'highlight.js';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Card, Header, Image, Label, Button } from 'semantic-ui-react';
+import { Card, Header, Image, Label, Button, Icon } from 'semantic-ui-react';
 import styles from './ArticleInfo.less';
+import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 
 class ArticleInfo extends React.Component {
   componentWillMount() {
@@ -20,6 +21,13 @@ class ArticleInfo extends React.Component {
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
+  readArticle = (Id) => {
+    this.props.dispatch({
+      type: 'article/readMore',
+      payload: Id,
+    });
+    console.log('Id>>>>>>>', Id);
+  }
   render() {
     const image = [
       'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-543828.jpg',
@@ -28,13 +36,14 @@ class ArticleInfo extends React.Component {
       'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267055.png',
     ];
     const { Article } = this.props;
+    console.log('ABC', Article);
     return (
       <Card.Group>
         {
           Article.data === undefined ? null : Article.data.map(item => (
             <Card
               fluid
-              key={item.key}
+              key={item.Id}
               className="sr"
             >
               <Image
@@ -48,18 +57,25 @@ class ArticleInfo extends React.Component {
                     <Label as="a" color="blue" tag>{item.Label1}</Label>
                     <Label as="a" color="violet" tag>{item.Label2}</Label>
                   </div>
-                  <div>-----2018-01-02</div>
+                  <div>
+                    <Icon name="calendar" />
+                    <span>2018-01-02</span>
+                  </div>
                 </div>
                 <hr />
-                <Card.Description
-                  dangerouslySetInnerHTML={{ __html: marked(item.Content) }}
-                />
+                <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }} />
                 <Link to="article">
                   <Button
                     content="继续阅读"
                     color="black"
+                    onClick={() => this.readArticle(item.Id)}
                   />
                 </Link>
+                {/* <Button
+                  content="继续阅读"
+                  color="black"
+                  onClick={() => this.readArticle(item.Id)}
+                /> */}
               </Card.Content>
             </Card>
           ))
@@ -69,6 +85,10 @@ class ArticleInfo extends React.Component {
   }
 }
 
-export default connect(state => ({
-  Article: state.article.Article,
+// export default connect(state => ({
+//   Article: state.article.Article,
+// }))(ArticleInfo);
+
+export default connect(({ article }) => ({
+  ...article,
 }))(ArticleInfo);
