@@ -7,7 +7,7 @@ import React from 'react';
 import marked from 'marked';
 import highlight from 'highlight.js';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
+import { Link, routerRedux } from 'dva/router';
 import { Card, Header, Image, Label, Button, Icon } from 'semantic-ui-react';
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
@@ -21,12 +21,12 @@ class ArticleInfo extends React.Component {
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
-  readArticle = (Id) => {
+  readArticles = (id) => {
     this.props.dispatch({
       type: 'article/readMore',
-      payload: Id,
+      payload: id,
     });
-    console.log('Id>>>>>>>', Id);
+    console.log('Id>>>>>>>', id);
   }
   render() {
     const image = [
@@ -40,10 +40,10 @@ class ArticleInfo extends React.Component {
     return (
       <Card.Group>
         {
-          Article.data === undefined ? null : Article.data.map(item => (
+          Article.data === undefined ? null : Article.data.map((item, index) => (
             <Card
               fluid
-              key={item.Id}
+              key={index}
               className="sr"
             >
               <Image
@@ -64,18 +64,18 @@ class ArticleInfo extends React.Component {
                 </div>
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }} />
-                <Link to="article">
+                {/* <Link to="article">
                   <Button
                     content="继续阅读"
                     color="black"
                     onClick={() => this.readArticle(item.Id)}
                   />
-                </Link>
-                {/* <Button
+                </Link> */}
+                <Button
                   content="继续阅读"
                   color="black"
-                  onClick={() => this.readArticle(item.Id)}
-                /> */}
+                  onClick={() => this.readArticles(index)}
+                />
               </Card.Content>
             </Card>
           ))

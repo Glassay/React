@@ -10,47 +10,43 @@ export default {
 
   state: {
     Article: [],
-    singleArticle: [],
+    keys: null,
   },
 
   effects: {
-    *showArticle({ payload }, { put, call, select }) {
+    *showArticle({ payload }, { put, call }) {
       const response = yield call(getArticle);
       console.log('rsponse>>>>>>', response);
       yield put({
         type: 'getArticles',
         payload: response,
       });
-      console.log('Article>>>>>>', response);
-      const aaa = yield select(state => state.article.Article);
-      console.log('AAA', aaa);
     },
-    *readMore({ payload }, { put, select }) {
-      const article = yield select(state => state.article.Article.data[payload]);
-
+    *readMore({ payload }, { put }) {
+      // const article = yield select(state => state.article.Article.data[payload]);
+      // yield console.log('aticle_________', article);
       // console.log('qqqqqqqq', aaa);
       // const article = aaa.data[payload];
-      console.log('article>>>>>>', article);
       yield put({
-        type: 'getArticle',
-        payload: article,
+        type: 'readArticle',
+        payload: payload, // eslint-disable-line
       });
-      yield put(routerRedux.push('main/article'));
+      yield put(routerRedux.push('/article'));
     },
   },
 
   reducers: {
     getArticles(state, action) {
-      console.log('Action:', action);
       return {
         ...state,
         Article: action.payload,
       };
     },
-    getArticle(state, action) {
+    readArticle(state, action) {
+      console.log('action>>>>>>', action);
       return {
         ...state,
-        singleArticle: action.payload,
+        keys: action.payload,
       };
     },
   },
