@@ -14,7 +14,7 @@ class Tag extends React.Component {
         <Card.Content>
           <Card.Header as="h4" color="grey">
             <Icon name="send" />
-            文章归档
+            文章标签
           </Card.Header>
         </Card.Content>
         <Card.Content extra>

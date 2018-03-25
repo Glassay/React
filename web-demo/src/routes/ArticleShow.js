@@ -8,8 +8,6 @@ import marked from 'marked';
 import highlight from 'highlight.js';
 import {
   Header,
-  Card,
-  Container,
   Segment,
   Divider,
   Label,
@@ -25,10 +23,6 @@ class ArticleShow extends React.Component {
   }
   render() {
     const { Article, keys } = this.props;
-    console.log('SingleArticle>>>>>>', keys);
-    console.log('Article+++++', Article.data);
-    console.log('Article.data[keys]++++++++', Article.data[keys]);
-    console.log('Article.data[keys].Title++++++', Article.data[keys].Title);
     return (
       <div>
         <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto' }}>
@@ -39,7 +33,6 @@ class ArticleShow extends React.Component {
           </div>
           <Divider horizontal>2018-3-08</Divider>
           <div dangerouslySetInnerHTML={{ __html: marked(Article.data[keys].Content) }} />
-          {/* <div>{Article.data[keys].Contnet}</div> */}
         </Segment>
       </div>
     );

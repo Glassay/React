@@ -78,7 +78,7 @@ class BasicLayout extends Component {
             <Header
               as="h2"
               textAlign="center"
-              content="Do whatever you want when you want to"
+              content="Welcome to my Blog!"
               inverted
             />
             <Container

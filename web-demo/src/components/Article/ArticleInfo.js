@@ -7,10 +7,11 @@ import React from 'react';
 import marked from 'marked';
 import highlight from 'highlight.js';
 import { connect } from 'dva';
-import { Link, routerRedux } from 'dva/router';
 import { Card, Header, Image, Label, Button, Icon } from 'semantic-ui-react';
+
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
+import images from '../../utils/images';
 
 class ArticleInfo extends React.Component {
   componentWillMount() {
@@ -26,17 +27,9 @@ class ArticleInfo extends React.Component {
       type: 'article/readMore',
       payload: id,
     });
-    console.log('Id>>>>>>>', id);
   }
   render() {
-    const image = [
-      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-543828.jpg',
-      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267050.jpg',
-      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-16295.jpg',
-      'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267055.png',
-    ];
     const { Article } = this.props;
-    console.log('ABC', Article);
     return (
       <Card.Group>
         {
@@ -48,7 +41,7 @@ class ArticleInfo extends React.Component {
             >
               <Image
                 style={{ height: 250 }}
-                src={image[Math.floor(Math.random() * image.length)]}
+                src={images.image[Math.floor(Math.random() * images.image.length)]}
               />
               <Card.Content>
                 <Header>{item.Title}</Header>
@@ -64,16 +57,12 @@ class ArticleInfo extends React.Component {
                 </div>
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }} />
-                {/* <Link to="article">
-                  <Button
-                    content="继续阅读"
-                    color="black"
-                    onClick={() => this.readArticle(item.Id)}
-                  />
-                </Link> */}
                 <Button
                   content="继续阅读"
                   color="black"
+                  style={{
+                    float: 'right',
+                  }}
                   onClick={() => this.readArticles(index)}
                 />
               </Card.Content>
@@ -84,10 +73,6 @@ class ArticleInfo extends React.Component {
     );
   }
 }
-
-// export default connect(state => ({
-//   Article: state.article.Article,
-// }))(ArticleInfo);
 
 export default connect(({ article }) => ({
   ...article,

@@ -15,6 +15,12 @@ const Label = () => {
       <a className="ui olive label">Angular</a>
       <a className="ui green label">Vue</a>
       <a className="ui teal label">Egg</a>
+      <a className="ui red label">ReactNative</a>
+      <a className="ui orange label">Node.js</a>
+      <a className="ui yellow label">Shell</a>
+      <a className="ui olive label">Webpack</a>
+      <a className="ui green label">Others</a>
+      <a className="ui teal label">CSS</a>
     </div>
   );
 };

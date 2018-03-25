@@ -23,10 +23,6 @@ export default {
       });
     },
     *readMore({ payload }, { put }) {
-      // const article = yield select(state => state.article.Article.data[payload]);
-      // yield console.log('aticle_________', article);
-      // console.log('qqqqqqqq', aaa);
-      // const article = aaa.data[payload];
       yield put({
         type: 'readArticle',
         payload: payload, // eslint-disable-line
@@ -43,7 +39,6 @@ export default {
       };
     },
     readArticle(state, action) {
-      console.log('action>>>>>>', action);
       return {
         ...state,
         keys: action.payload,
