@@ -41,7 +41,7 @@ class ArticleInfo extends React.Component {
             >
               <Image
                 style={{ height: 250 }}
-                src={images.image[Math.floor(Math.random() * images.image.length)]}
+                src={images.headImage[Math.floor(Math.random() * images.headImage.length)]}
               />
               <Card.Content>
                 <Header>{item.Title}</Header>

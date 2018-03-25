@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'dva';
 import '../../node_modules/highlight.js/styles/atom-one-dark.css';
+import styles from './ArticleShow.less';
 
 class ArticleShow extends React.Component {
   componentWillMount() {
@@ -24,8 +25,8 @@ class ArticleShow extends React.Component {
   render() {
     const { Article, keys } = this.props;
     return (
-      <div>
-        <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto' }}>
+      <div className={styles.bgImage}>
+        <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
           <Header>{Article.data[keys].Title}</Header>
           <div>
             <Label as="a" color="blue" tag>{Article.data[keys].Label1}</Label>
