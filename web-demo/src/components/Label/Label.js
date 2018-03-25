@@ -4,26 +4,32 @@
  */
 
 import React from 'react';
+import { Label } from 'semantic-ui-react';
+
+import colors from '../../utils/colors';
 import styles from './Label.less';
+import labels from '../../utils/labels';
 
-const Label = () => {
-  return (
-    <div className={styles.Label}>
-      <a className="ui red label">JavaScript</a>
-      <a className="ui orange label">React</a>
-      <a className="ui yellow label">React Native</a>
-      <a className="ui olive label">Angular</a>
-      <a className="ui green label">Vue</a>
-      <a className="ui teal label">Egg</a>
-      <a className="ui red label">ReactNative</a>
-      <a className="ui orange label">Node.js</a>
-      <a className="ui yellow label">Shell</a>
-      <a className="ui olive label">Webpack</a>
-      <a className="ui green label">Others</a>
-      <a className="ui teal label">CSS</a>
-    </div>
-  );
-};
-
-export default Label;
-
+export default class Labels extends React.Component {
+  render() {
+    return (
+      <div className={styles.a}>
+        {
+          labels.map((item, index) => (
+            <Label
+              style={{
+                display: 'inline-block',
+                textAlign: 'center',
+                margin: 5,
+              }}
+              color={colors[index]}
+              size="large"
+              key={index}
+              content={item}
+            />
+          ))
+        }
+      </div>
+    );
+  }
+}

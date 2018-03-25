@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Card, Icon } from 'semantic-ui-react';
-import Label from '../components/Label/Label';
+import Labels from '../components/Label/Label';
 
 class Tag extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class Tag extends React.Component {
           </Card.Header>
         </Card.Content>
         <Card.Content extra>
-          <Label />
+          <Labels />
         </Card.Content>
       </Card>
     );

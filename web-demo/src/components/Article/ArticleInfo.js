@@ -58,7 +58,7 @@ class ArticleInfo extends React.Component {
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }} />
                 <Button
-                  content="继续阅读"
+                  content="阅读全文"
                   color="black"
                   style={{
                     float: 'right',
