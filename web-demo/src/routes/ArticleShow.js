@@ -26,15 +26,18 @@ class ArticleShow extends React.Component {
     const { Article, keys } = this.props;
     return (
       <div className={styles.bgImage}>
-        <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
-          <Header>{Article.data[keys].Title}</Header>
-          <div>
-            <Label as="a" color="blue" tag>{Article.data[keys].Label1}</Label>
-            <Label as="a" color="violet" tag>{Article.data[keys].Label2}</Label>
-          </div>
-          <Divider horizontal>2018-3-08</Divider>
-          <div dangerouslySetInnerHTML={{ __html: marked(Article.data[keys].Content) }} />
-        </Segment>
+        {
+          Article.data === undefined ? null :
+          <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
+            <Header>{Article.data[keys].Title}</Header>
+            <div>
+              <Label as="a" color="blue" tag>{Article.data[keys].Label1}</Label>
+              <Label as="a" color="violet" tag>{Article.data[keys].Label2}</Label>
+            </div>
+            <Divider horizontal>2018-3-08</Divider>
+            <div dangerouslySetInnerHTML={{ __html: marked(Article.data[keys].Content) }} />
+          </Segment>
+        }
       </div>
     );
   }

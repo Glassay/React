@@ -29,7 +29,8 @@ class ArticleInfo extends React.Component {
     });
   }
   render() {
-    const { Article } = this.props;
+    const { Article, loading } = this.props;
+    console.log('loading>>>>>', loading);
     return (
       <Card.Group>
         {
@@ -56,7 +57,7 @@ class ArticleInfo extends React.Component {
                   </div>
                 </div>
                 <hr />
-                <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }} />
+                <div>{item.Brief}</div>
                 <Button
                   content="阅读全文"
                   color="black"
@@ -74,6 +75,7 @@ class ArticleInfo extends React.Component {
   }
 }
 
-export default connect(({ article }) => ({
-  ...article,
+export default connect(state => ({
+  Article: state.article.Article,
+  loading: state.loading.models.article,
 }))(ArticleInfo);
