@@ -35,6 +35,7 @@ class ArticleInfo extends React.Component {
       <Card.Group>
         {
           Article.data === undefined ? null : Article.data.map((item, index) => (
+            Article.State === 0 ? null :
             <Card
               fluid
               key={index}

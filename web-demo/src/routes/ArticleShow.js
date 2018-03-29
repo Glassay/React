@@ -22,10 +22,13 @@ class ArticleShow extends React.Component {
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
+  componentDidMount() {
+    this.node.scrollIntoView();
+  }
   render() {
     const { Article, keys } = this.props;
     return (
-      <div className={styles.bgImage}>
+      <div ref={node => (this.node = node)} className={styles.bgImage}>
         {
           Article.data === undefined ? null :
           <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>

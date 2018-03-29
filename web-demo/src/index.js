@@ -1,6 +1,5 @@
 import dva from 'dva';
 import createLoading from 'dva-loading';
-// import { browserHistory } from 'dva/router';
 import createHistory from 'history/createBrowserHistory';
 import './index.css';
 
@@ -8,13 +7,6 @@ import './index.css';
 const app = dva({
   history: createHistory(),
 });
-
-// const loading = {
-//   global: false,
-//   models: {
-//     article: false,
-//   },
-// };
 
 // 2. Plugins
 // app.use({});
